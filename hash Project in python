@@ -1,0 +1,60 @@
+"""
+#Hash_function
+#Jadi_Mirmirani
+
+#HASH_TABLE
+
+# +: determinist, uniform, defined_range, (continuity!), (Criptogrphy: non_invertible)
+
+# ASCI_Code
+
+
+# ASCI_Code: print(ord('Alphabet'))
+# print(ord('a')) == 97
+# print(ord('A')) == 65
+"""
+
+
+
+# HASH_TABLE --> speed search
+# Bloom_Filter
+# Hash_Criptogerphy: SHA2 --> ghire qabele bazgasht
+# SHA256 online (in: unendlich, out: 2**256)
+# Telegram, Ramznegari
+# Salt ---> Brute force
+
+###################################################################################
+###################################################################################
+"""
+        We want to find a hash of my name and my student number 
+            such that the last 4-digit of the hash is equal to e.g. '1111'.
+            
+        Wir möchten einen Hash meines Namens und meiner Matrikelnummer finden, 
+            sodass die letzten 4 Ziffern des Hashs beispielsweise „1111“ ergeben.
+"""
+###################################################################################
+###################################################################################
+
+import hashlib
+
+data = 'Mein Name ist Arshia und 012345 ist meine Matrikelnummer.'
+dOrg = data
+m = hashlib.sha256()
+m.update(data.encode('utf-8'))
+hash = m.hexdigest()
+a = 0
+while(1):
+    a +=1
+    data = dOrg
+    data += str(a)
+    m.update((data).encode('utf-8'))
+    hash = m.hexdigest()
+    #print(hash[-4:])
+    
+    if(hash[-4:] == '1111'):
+        print('\n\nGefunden, \nthe string is:', data)
+        break
+    #else:
+    #    print(a, '\nhash:', hash)
+
+print('\n',hash[-4:], hash)
