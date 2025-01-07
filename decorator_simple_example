@@ -1,0 +1,21 @@
+# Decorator
+def my_descriptor(func):
+    def wrapper():
+        print(f"\nRunning Func: {func.__name__} ")
+        func()
+        print(f"{func.__name__} is completed!")
+    return wrapper
+
+
+@my_descriptor
+def do_this():
+    print("Doing this!")
+
+
+@my_descriptor
+def do_that():
+    print("Doing that!")
+
+
+do_this()
+do_that()
